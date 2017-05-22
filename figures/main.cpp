@@ -4,20 +4,22 @@
 class figure{
     protected:
         std::string name;
-        int rects[4] = {0, 0, 0, 0};
     public:
         figure(){
-            name = "untitled figure";
+            name;
         }
-        void set_rects() {};
         void print() {  std::cout << "Figures name: " << name << "\n"; };
 
+        ~figure() { std::cout << "figure is destroyed \n"; }
 };
 
 class triangle : public figure {
     public:
         triangle(){
             name = "triangle";
+        }
+        ~triangle(){
+            std::cout << "triangle is destroyed\n";
         }
 };
 
@@ -26,12 +28,18 @@ class square : public figure {
         square(){
             name = "square";
         }
+        ~square(){
+            std::cout << "square is destroyed\n";
+        }
 };
 
 class circle : public figure {
     public:
         circle(){
             name = "circle";
+        }
+        ~circle(){
+            std::cout << "circle is destroyed\n";
         }
 };
 
@@ -41,7 +49,6 @@ int main() {
     figure arr[size];
     for (int i = 0; i < size; i++){
         int random_num = random()%3;
-        std::cout << random_num << "  ";
         if (random_num == 0){
             triangle t;
             arr[i] = t;
@@ -58,11 +65,6 @@ int main() {
     for (int i = 0; i < size; i++){
         arr[i].print();
     }
-
-
-//    for (int i = 0; i < size; i++){
-//       std::cout << i << "  ";
-//    }
 
     return 0;
 }
