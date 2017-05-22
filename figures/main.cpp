@@ -10,7 +10,9 @@ class figure{
         }
         void print() {  std::cout << "Figures name: " << name << "\n"; };
 
-        ~figure() { std::cout << "figure is destroyed \n"; }
+        ~figure(){
+            std::cout << "figure is destroyed\n";
+        };
 };
 
 class triangle : public figure {
@@ -50,20 +52,21 @@ int main() {
     for (int i = 0; i < size; i++){
         int random_num = random()%3;
         if (random_num == 0){
-            triangle t;
-            arr[i] = t;
+            triangle *t = new triangle;
+            arr[i] = *t;
         }
         else if(random_num == 1) {
-            square s;
-            arr[i] = s;
+            square *s = new square;
+            arr[i] = *s;
         }
         else {
-            circle c;
-            arr[i] = c;
+            circle *c = new circle;
+            arr[i] = *c;
         }
     }
     for (int i = 0; i < size; i++){
         arr[i].print();
+        //delete arr[i];
     }
 
     return 0;
