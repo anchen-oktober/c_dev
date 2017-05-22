@@ -47,7 +47,7 @@ class circle : public figure {
 
 int main() {
 
-    int size = 10;
+    int size = 100;
     figure arr[size];
     for (int i = 0; i < size; i++){
         int random_num = random()%3;
