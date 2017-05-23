@@ -6,6 +6,7 @@ class figure{
         std::string name;
     public:
         figure(){
+            //std::cout << "call base constructor\n";
             name;
         }
         void print() {  std::cout << "Figures name: " << name << "\n"; };
@@ -47,28 +48,30 @@ class circle : public figure {
 
 int main() {
 
-    int size = 100;
-    figure **arr = new figure*[size];
+    int ARRAY_SIZE = 100;
+    std::vector<figure*> vec;
 
-    for (int i = 0; i < size; i++){
+    for (int i = 0; i < ARRAY_SIZE; ++i){
         int random_num = random()%3;
         if (random_num == 0){
-            figure * t = new triangle();
-            arr[i] = t;
+            triangle * t = new triangle();
+            vec.push_back(t);
         }
         else if(random_num == 1) {
-            figure * s = new square();
-            arr[i] = s;
+            square * s = new square();
+            vec.push_back(s);
         }
         else {
-            figure * c = new circle();
-            arr[i] = c;
+            circle * c = new circle();
+            vec.push_back(c);
         }
     }
-    for (int i = 0; i < size; i++){
-        arr[i]->print();
-        delete arr[i];
+    for (int i = 0; i < vec.size(); ++i){
+        vec[i]->print();
+        delete vec[i];
     }
+
+    vec.clear();
 
     return 0;
 }
