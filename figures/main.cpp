@@ -30,7 +30,10 @@ class triangle : public figure {
     public:
         triangle(vertex x1, vertex x2, vertex x3){
             name = "triangle";
-            rect = {x1, x2, x3};
+            
+            rect.push_back(x1);
+            rect.push_back(x2);
+            rect.push_back(x3);
         }
         ~triangle(){
             std::cout << "triangle is destroyed\n";
@@ -41,7 +44,11 @@ class square : public figure {
     public:
         square(vertex x1, vertex x2, vertex x3, vertex x4){
             name = "square";
-            rect = {x1, x2, x3, x4};
+
+            rect.push_back(x1);
+            rect.push_back(x2);
+            rect.push_back(x3);
+            rect.push_back(x4);
         }
 
         void print_position() {
@@ -55,12 +62,13 @@ class square : public figure {
 };
 
 class circle : public figure {
-private:
+    private:
         int circle_radius;
     public:
         circle(vertex center, int radius){
             name = "circle";
-            rect = {center};
+
+            rect.push_back(center);
             circle_radius = radius;
         }
 
